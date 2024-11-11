@@ -108,6 +108,7 @@ function keyPressed() {
 function showCannonBalls(ball, index) {
   if (ball) {
     ball.display();
+    ball.animate();
     if (ball.body.position.x >= width || ball.body.position.y >= height - 50) {
       if (!ball.isSink) {
         ball.remove(index);
