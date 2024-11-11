@@ -8,8 +8,7 @@ var canvas, angle, tower, ground, cannon;
 var balls = [];
 var boats = [];
 var score = 0;
-var boatAnimation = [];
-var boatSpritedata, boatSpritesheet;
+
 
 var waterSplashAnimation = [];
 var waterSplashSpritedata, waterSplashSpritesheet;
@@ -17,8 +16,7 @@ var waterSplashSpritedata, waterSplashSpritesheet;
 function preload() {
   backgroundImg = loadImage("./assets/background.gif");
   towerImage = loadImage("./assets/tower.png");
-  boatSpritedata = loadJSON("assets/boat/boat.json");
-  boatSpritesheet = loadImage("assets/boat/boat.png");;
+  
   waterSplashSpritedata = loadJSON("assets/waterSplash/waterSplash.json");
   waterSplashSpritesheet = loadImage("assets/waterSplash/waterSplash.png");
 }
@@ -39,12 +37,7 @@ function setup() {
 
   cannon = new Cannon(180, 110, 130, 100, angle);
 
-  var boatFrames = boatSpritedata.frames;
-  for (var i = 0; i < boatFrames.length; i++) {
-    var pos = boatFrames[i].position;
-    var img = boatSpritesheet.get(pos.x, pos.y, pos.w, pos.h);
-    boatAnimation.push(img);
-  }
+  
 
 
   var waterSplashFrames = waterSplashSpritedata.frames;
@@ -138,7 +131,7 @@ function showBoats() {
         170,
         170,
         position,
-        boatAnimation
+       
       );
 
       boats.push(boat);
@@ -152,12 +145,12 @@ function showBoats() {
         });
 
         boats[i].display();
-        boats[i].animate();
+        
         
     }
     }
   } else {
-    var boat = new Boat(width, height - 60, 170, 170, -60, boatAnimation);
+    var boat = new Boat(width, height - 60, 170, 170, -60);
     boats.push(boat);
   }
 }
